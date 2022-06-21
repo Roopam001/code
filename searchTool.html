@@ -1,0 +1,49 @@
+<template>
+    <lightning-card>
+        <lightning-input label="Value" value={Value} onchange={ValueHandler}></lightning-input>
+        <lightning-button label="Search" onclick={searchhandler}></lightning-button>
+        <lightning-button label="Search2" onclick={searchhandler2}></lightning-button>
+    </lightning-card>
+    
+    <div class="slds-box slds-theme–default"> 
+        <template if:true = {cdList}>                  
+                <div style = "height: 300px;">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                        <tr>
+                            <th scope = "col">Name</th>
+                            <th scope = "col">Value</th>
+                        </tr>
+                        <template iterator:it = {cdList}>
+                            <tr key = {it.value.Id}>
+                                <td><a href="#" data-record-id={it.value.Id} onclick={recordPage}>
+                                                                  {it.value.Name}</a></td>
+                                <td>{it.value.Value}</td>
+                                
+                            </tr>
+                        </template>
+                    </table>
+                </div>                  
+     
+            </template>      
+             
+    </div>
+    
+</template>       
+
+
+
+<!--  <template for:each={cdList} for:item="cd">
+            <p key={cd.id}>
+                <a>{cd.Name}</a> 
+            </p>
+       </template>  -->
+
+       <!--   <template if:true={cdList}>
+        <lightning-datatable
+                key-field="Id"
+                data={cdList}
+                columns={columns}
+               onclick={recordPage}>
+        </lightning-datatable>
+    </template> 
+-->
